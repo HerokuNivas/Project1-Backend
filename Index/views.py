@@ -3,6 +3,7 @@ from Code import Code
 
 def HomeRoute(request):
     apiKey = request.GET.get('apikey')
+    print(apiKey)
     repoLocation = request.GET.get('location')
     name = request.GET.get('name')
     message = Code.IR.BSBI(apiKey, repoLocation, name)
