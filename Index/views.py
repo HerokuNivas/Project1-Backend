@@ -2,7 +2,10 @@ from django.http import JsonResponse
 from Code import Code
 
 def HomeRoute(request):
-    message = Code.IR.BSBI("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", "HerokuNivas/InvertedIndex", "nivas")
+    apiKey = request.GET.get('apikey')
+    repoLocation = request.GET.get('location')
+    name = request.GET.get('name')
+    message = Code.IR.BSBI(apiKey, repoLocation, name)
     successCode = False
     if message != "Success":
         successCode = False
