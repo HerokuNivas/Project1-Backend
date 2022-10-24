@@ -21,6 +21,8 @@ class IR:
         except:
             return "Wrong repo name entered. Check your username and reponame."
 
+        if fileName == None:
+            fileName = "InvertedIndex"
         wordsUnique = set()
 
 
@@ -70,7 +72,7 @@ class IR:
 
         contentIs = contentIs.encode('utf-8')
         try:
-            repository.create_file(f"{fileName}.txt", "Merged file", contentIs)
+            repository.create_file(f"{fileName}.txt", "Generated Inverted Index File", contentIs)
             
         except:
             return "File with specified name already exists!"
