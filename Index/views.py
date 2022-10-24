@@ -3,7 +3,7 @@ from Code import Code
 
 def HomeRoute(request):
     apiKey = request.GET.get('apikey')
-    print("apiKey ", apiKey)
+    print("apiKey", apiKey)
     repoLocation = request.GET.get('location')
     print("repolcation", repoLocation)
     name = request.GET.get('name')

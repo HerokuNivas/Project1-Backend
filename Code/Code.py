@@ -11,12 +11,15 @@ class IR:
     def BSBI(apiKey, repository, fileName):
         try:
             g = Github(apiKey)
-
+        except:
+            return "An exception occurred in authorising API"
+        
+        try:
             repository = g.get_repo(repository)
 
             files = repository.get_contents("")
         except:
-            return "An exception occurred in authorising API"
+            return "Wrong repo name entered. Check your username and reponame."
 
         wordsUnique = set()
 
