@@ -66,6 +66,7 @@ class IR:
         for keyVal in dictStore:
             contentIs += keyVal
             contentIs += "   "
+            dictStore[keyVal] = sorted(dictStore[keyVal])
             for element in dictStore[keyVal]:
                 contentIs += str(element) + " "
             contentIs += "\n"
