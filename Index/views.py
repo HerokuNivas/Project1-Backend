@@ -3,12 +3,10 @@ from Code import Code
 
 def HomeRoute(request):
     apiKey = request.GET.get('apikey')
-    print("apiKey", apiKey)
-    repoLocation = request.GET.get('location')
-    print("repolcation", repoLocation)
-    name = request.GET.get('name')
-    print("name", name)
-    message = Code.IR.BSBI(apiKey, repoLocation, name)
+    userName = request.GET.get('userName')
+    repoName = request.GET.get('repoName')
+    fileName = request.GET.get('fileName')
+    message = Code.IR.BSBI(apiKey,userName,repoName, fileName)
     successCode = False
     if message != "Success":
         successCode = False

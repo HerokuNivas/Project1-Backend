@@ -8,14 +8,14 @@ import re
 
 class IR:
     ps = PorterStemmer()
-    def BSBI(apiKey, repository, fileName):
+    def BSBI(apiKey, userName, repoName, fileName):
         try:
             g = Github(apiKey)
         except:
             return "An exception occurred in authorising API"
         
         try:
-            repository = g.get_repo(repository)
+            repository = g.get_repo(userName+"/"+repoName)
 
             files = repository.get_contents("")
         except:
