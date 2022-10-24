@@ -56,9 +56,8 @@ class IR:
                         word = re.sub(r'[^\w\s]', '', word)
                         if word.lower() in wordsUnique:
                             if word.lower() not in dictStore:
-                                dictStore[word.lower()] = []
-                            if file.name.replace(".txt","") in dictStore[word.lower()]:
-                                dictStore[word.lower()].append(file.name.replace(".txt", ""))
+                                dictStore[word.lower()] = set()
+                            dictStore[word.lower()].add(file.name.replace(".txt", ""))
 
 
 
