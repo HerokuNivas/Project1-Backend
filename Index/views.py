@@ -13,4 +13,4 @@ def HomeRoute(request):
     else:
         successCode = True
     dictIs = {'successCode': successCode, 'text': message}
-    return JsonResponse(dictIs)
+    return JsonResponse(dictIs, safe=False)
