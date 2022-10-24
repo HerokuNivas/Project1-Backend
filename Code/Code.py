@@ -57,7 +57,7 @@ class IR:
                         if word.lower() in wordsUnique:
                             if word.lower() not in dictStore:
                                 dictStore[word.lower()] = set()
-                            dictStore[word.lower()].add(file)
+                            dictStore[word.lower()].add(file.name)
 
 
 
