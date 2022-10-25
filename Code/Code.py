@@ -73,7 +73,7 @@ class IR:
 
         contentIs = contentIs.encode('utf-8')
         try:
-            repository.create_file(f"{fileName}.txt", "Generated Inverted Index File", contentIs)
+            repository.create_file(f"{fileName}.txt", "Generated Inverted Index File by Inverted Index Generator", contentIs)
             
         except:
             return "File with specified name already exists!"
