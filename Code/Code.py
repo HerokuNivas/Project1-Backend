@@ -1,7 +1,6 @@
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
 from gensim.parsing.preprocessing import remove_stopwords
-import os
 from github import Github
 import re
 
@@ -39,7 +38,7 @@ class IR:
                     for word in currItem:
                         word = re.sub(r'[^\w\s]', '', word)
                         if len(word) > 0:
-                            wordsUnique.add(word)
+                            wordsUnique.add(IR.ps.stem(word.lower()))
                             
         dictStore = {}
 
@@ -54,10 +53,10 @@ class IR:
                     currItem = items.split(' ')
                     for word in currItem:
                         word = re.sub(r'[^\w\s]', '', word)
-                        if word.lower() in wordsUnique:
-                            if word.lower() not in dictStore:
-                                dictStore[word.lower()] = set()
-                            dictStore[word.lower()].add(file.name.replace(".txt", ""))
+                        if IR.ps.stem(word.lower()) in wordsUnique:
+                            if IR.ps.stem(word.lower()) not in dictStore:
+                                dictStore[IR.ps.stem(word.lower())] = set()
+                            dictStore[IR.ps.stem(word.lower())].add(file.name.replace(".txt", ""))
 
 
 
