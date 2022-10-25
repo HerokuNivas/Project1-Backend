@@ -19,7 +19,7 @@ class IR:
 
             files = repository.get_contents("")
         except:
-            return "Wrong repo name entered. Check your username and reponame."
+            return "Check the details which you entered."
 
         if fileName == None:
             fileName = "InvertedIndex"
