@@ -6,7 +6,8 @@ def HomeRoute(request):
     userName = request.GET.get('userName')
     repoName = request.GET.get('repoName')
     fileName = request.GET.get('fileName')
-    message = Code.IR.BSBI(apiKey,userName,repoName, fileName)
+    type = request.GET.get('type')
+    message = Code.IR.BSBI(apiKey,userName,repoName, fileName, type)
     successCode = False
     if message != "Success":
         successCode = False

@@ -7,7 +7,7 @@ import re
 
 class IR:
     ps = PorterStemmer()
-    def BSBI(apiKey, userName, repoName, fileName):
+    def BSBI(apiKey, userName, repoName, fileName, type):
         try:
             g = Github(apiKey)
         except:
@@ -56,7 +56,10 @@ class IR:
                         if IR.ps.stem(word.lower()) in wordsUnique:
                             if IR.ps.stem(word.lower()) not in dictStore:
                                 dictStore[IR.ps.stem(word.lower())] = set()
-                            dictStore[IR.ps.stem(word.lower())].add(file.name.replace(".txt", ""))
+                            if type=='FileName':
+                                dictStore[IR.ps.stem(word.lower())].add(file.name.replace(".txt", ""))
+                            else:
+                                dictStore[IR.ps.stem(word.lower())].add(index+1)
 
 
 
@@ -67,7 +70,10 @@ class IR:
             contentIs += "   "
             dictStore[keyVal] = sorted(dictStore[keyVal])
             for element in dictStore[keyVal]:
-                contentIs += str(element) + " "
+                if type=='Index':
+                    contentIs += str(element) + " "
+                else:
+                    contentIs += f"'{str(element)}'"+ " "
             contentIs += "\n"
 
         contentIs = contentIs.encode('utf-8')
