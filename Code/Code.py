@@ -64,7 +64,7 @@ class IR:
 
 
         contentIs = ""
-
+        dictStore = dict(sorted(dictStore.items(), key = lambda x : x[0]))
         for keyVal in dictStore:
             contentIs += keyVal
             contentIs += "   "
