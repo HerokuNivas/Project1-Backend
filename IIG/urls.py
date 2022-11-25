@@ -20,5 +20,5 @@ from Index.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeRoute, name="Home"),
-    path('list/', ListRoute, name="List"),
+    path('search/',SearchRoute, name="Search")
 ]

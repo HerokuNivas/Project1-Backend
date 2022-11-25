@@ -1,5 +1,6 @@
 from django.http import JsonResponse
 from Code import Code
+from Code import Search
 
 def HomeRoute(request):
     apiKey = request.GET.get('apikey')
@@ -16,5 +17,10 @@ def HomeRoute(request):
     dictIs = {'successCode': successCode, 'text': message}
     return JsonResponse(dictIs, safe=False)
 
-def ListRoute(request):
-    return JsonResponse({"name": "Nivas"}, safe=False)
+
+def SearchRoute(request):
+    link = request.GET.get('link')
+    word = request.GET.get('word')
+    word = word.lower()
+    result = Search.Search.Search(link, word)
+    return JsonResponse({"Files": result[0], "Success" : result[1], "User": result[2], "Repo": result[3]}, safe=False)
