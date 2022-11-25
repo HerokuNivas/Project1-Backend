@@ -17,4 +17,4 @@ def HomeRoute(request):
     return JsonResponse(dictIs, safe=False)
 
 def ListRoute(request):
-    return "Hello world"
+    return JsonResponse({"name": "Nivas"}, safe=False)
