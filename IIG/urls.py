@@ -19,5 +19,6 @@ from Index.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', HomeRoute, name="Home")
+    path('', HomeRoute, name="Home"),
+    path('List/', ListRoute, name="List"),
 ]

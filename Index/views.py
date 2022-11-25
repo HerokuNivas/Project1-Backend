@@ -15,3 +15,6 @@ def HomeRoute(request):
         successCode = True
     dictIs = {'successCode': successCode, 'text': message}
     return JsonResponse(dictIs, safe=False)
+
+def ListRoute(request):
+    return "Hello world"
