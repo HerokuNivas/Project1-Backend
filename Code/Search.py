@@ -35,7 +35,8 @@ class Search:
                         if(words[i].isnumeric()):
                             dictIs[words[0]].append(ListFiles[int(words[i])-1])
                         else:
-                            dictIs[words[0]].append(words[i])      
+                            if(words[i] != fileName):
+                                dictIs[words[0]].append(words[i])      
         except Exception as e:
             print(e)
             successCode = "Failure"  
