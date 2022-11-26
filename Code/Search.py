@@ -1,9 +1,4 @@
-import nltk
-nltk.download('omw-1.4')
-nltk.download('wordnet')
-
 from github import Github
-from nltk.stem import WordNetLemmatizer
 
 class Search:
     
@@ -30,7 +25,7 @@ class Search:
             line = content.split("\n")
             for singleline in line:
                 words = singleline.split(" ")
-                if lemmatizer.lemmatize(word) in lemmatizer.lemmatize(words[0].lower()) and words[0]!='':
+                if word.lower() in words[0].lower() and words[0]!='':
                     dictIs[words[0]] = []
                     for i in range(3,len(words)-1):
                         if(words[i].isnumeric()):
