@@ -24,4 +24,4 @@ def SearchRoute(request):
     apiKey = request.GET.get('apiKey')
     word = word.lower()
     result = Search.Search.Search(link, word, apiKey)
-    return JsonResponse({"Files": result[0], "Success" : result[1], "User": result[2], "Repo": result[3]}, safe=False)
+    return JsonResponse({"Files": result[0], "Success" : result[1], "User": result[2], "Repo": result[3], "Error": result[4]}, safe=False)

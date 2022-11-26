@@ -7,7 +7,9 @@ from nltk.stem import WordNetLemmatizer
 class Search:
     
     def Search(link, word, apiKey):
+        line = 1
         successCode = "Success"
+        error = "Nothing"
         if("https://github.com/" not in link or "/blob/main" not in link or len(link.split("/"))!=8):
             return [{}, "Failure", "", ""]
         link = link.replace("https://github.com/","")
@@ -38,7 +40,7 @@ class Search:
                             if(words[i] != fileName):
                                 dictIs[words[0]].append(words[i])      
         except Exception as e:
-            print(e)
+            error = e
             successCode = "Failure"  
         print(dictIs)                              
-        return [dictIs, successCode, userName, repoName]
+        return [dictIs, successCode, userName, repoName, error]
