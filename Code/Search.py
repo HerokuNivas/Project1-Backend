@@ -1,4 +1,9 @@
+import nltk
+nltk.download('omw-1.4')
+nltk.download('wordnet')
+
 from github import Github
+from nltk.stem import WordNetLemmatizer
 
 class Search:
     
@@ -12,6 +17,7 @@ class Search:
         dictIs = {}
         try:
             ListFiles = []
+            lemmatizer = WordNetLemmatizer()
             g = Github(apiKey)
             repo = g.get_repo(f"{userName}/{repoName}")
             files = repo.get_contents("")
