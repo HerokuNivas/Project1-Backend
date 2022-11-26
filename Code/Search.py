@@ -12,7 +12,6 @@ class Search:
         dictIs = {}
         try:
             ListFiles = []
-            lemmatizer = WordNetLemmatizer()
             g = Github(apiKey)
             repo = g.get_repo(f"{userName}/{repoName}")
             files = repo.get_contents("")
