@@ -6,7 +6,7 @@ from nltk.stem import WordNetLemmatizer
 
 class Search:
     
-    def Search(link, word):
+    def Search(link, word, apiKey):
         successCode = "Success"
         if("https://github.com/" not in link or "/blob/main" not in link or len(link.split("/"))!=8):
             return [{}, "Failure", "", ""]
@@ -17,7 +17,7 @@ class Search:
         try:
             ListFiles = []
             lemmatizer = WordNetLemmatizer()
-            g = Github()
+            g = Github(apiKey)
             repo = g.get_repo(f"{userName}/{repoName}")
             files = repo.get_contents("")
             print(files)
