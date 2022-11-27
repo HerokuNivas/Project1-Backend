@@ -37,7 +37,7 @@ class Search:
                             dictIs[words[0]].append(ListFiles[int(words[i])-1])
                         else:
                             if(words[i] != fileName):
-                                dictIs[words[0]].append(words[i])      
+                                dictIs[words[0]].append(words[i][1:len(words[i]-1)]+".txt")      
         except Exception as e:
             successCode = "Failure"  
         print(dictIs)                              
