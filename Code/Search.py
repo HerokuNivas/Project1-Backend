@@ -37,8 +37,11 @@ class Search:
                             dictIs[words[0]].append(ListFiles[int(words[i])-1])
                         else:
                             if(words[i] != fileName):
-                                dictIs[words[0]].append(words[i][1:len(words[i]-1)]+".txt")      
+                                for j in range(len(ListFiles)):
+                                    if ListFiles[j].replace('.txt','') ==  words[i][1:len(words[i])-1]:
+                                        dictIs[words[0]].append(ListFiles[j])      
         except Exception as e:
+            print(e)
             successCode = "Failure"  
         print(dictIs)                              
         return [dictIs, successCode, userName, repoName]
