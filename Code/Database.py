@@ -7,7 +7,6 @@ environ.Env.read_env()
 class Database:
     def get_database():
         PASSWORD=env("PASSWORD_IS")
-        print(PASSWORD)
         CONNECTION_STRING="mongodb+srv://VSNSAINIVAS:"+PASSWORD+"@cluster0.ciz9ysq.mongodb.net/?retryWrites=true&w=majority"
         client = MongoClient(CONNECTION_STRING)
         return client['invertedindex']['update']
