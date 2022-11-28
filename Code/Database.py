@@ -12,13 +12,13 @@ class Database:
         return client['invertedindex']['update']
     
     def Database(update):
-        Success = "Success"
-        try:
-            db = Database.get_database()
-            upadateIs = {"update":update}
-            db.insert_one(upadateIs)
-        except Exception as e:
-            print(e)
-            Success = "Failure"
-        return [Success]
+        # Success = "Success"
+        # try:
+        db = Database.get_database()
+        upadateIs = {"update":update}
+        db.insert_one(upadateIs)
+        # except Exception as e:
+        #     print(e)
+        #     Success = "Failure"
+        return ["Success"]
         
