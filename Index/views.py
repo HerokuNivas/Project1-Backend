@@ -28,7 +28,6 @@ def SearchRoute(request):
     return JsonResponse({"Files": result[0], "Success" : result[1], "User": result[2], "Repo": result[3]}, safe=False)
 
 def DataRoute(request):
-    email = request.GET.get('email')
     update = request.GET.get('update')
-    result = Database.Database.Database(email, update)
+    result = Database.Database.Database(update)
     return JsonResponse({"Success": result[0]})

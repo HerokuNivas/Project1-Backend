@@ -11,11 +11,11 @@ class Database:
         client = MongoClient(CONNECTION_STRING)
         return client['invertedindex']['update']
     
-    def Database(email, update):
+    def Database(update):
         Success = "Success"
         try:
             db = Database.get_database()
-            upadateIs = {"email":email, "update":update}
+            upadateIs = {"update":update}
             db.insert_one(upadateIs)
         except Exception as e:
             print(e)
