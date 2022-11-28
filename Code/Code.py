@@ -1,12 +1,16 @@
-from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
 from gensim.parsing.preprocessing import remove_stopwords
 from github import Github
+from nltk.stem import WordNetLemmatizer
 import re
+import nltk
+
+nltk.download('omw-1.4')
+nltk.download('wordnet')
 
 
 class IR:
-    ps = PorterStemmer()
+    lemmatizer = WordNetLemmatizer()
     def BSBI(apiKey, userName, repoName, fileName, type):
         try:
             g = Github(apiKey)
@@ -38,7 +42,7 @@ class IR:
                     for word in currItem:
                         word = re.sub(r'[^\w\s]', '', word)
                         if len(word) > 0:
-                            wordsUnique.add(IR.ps.stem(word.lower()))
+                            wordsUnique.add(IR.lemmatizer.lemmatize(word.lower()))
                             
         dictStore = {}
 
@@ -53,13 +57,13 @@ class IR:
                     currItem = items.split(' ')
                     for word in currItem:
                         word = re.sub(r'[^\w\s]', '', word)
-                        if IR.ps.stem(word.lower()) in wordsUnique:
-                            if IR.ps.stem(word.lower()) not in dictStore:
-                                dictStore[IR.ps.stem(word.lower())] = set()
+                        if IR.lemmatizer.lemmatize(word.lower()) in wordsUnique:
+                            if IR.lemmatizer.lemmatize(word.lower()) not in dictStore:
+                                dictStore[IR.lemmatizer.lemmatize(word.lower())] = set()
                             if type=='FileName':
-                                dictStore[IR.ps.stem(word.lower())].add(file.name.replace(".txt", ""))
+                                dictStore[IR.lemmatizer.lemmatize(word.lower())].add(file.name.replace(".txt", ""))
                             else:
-                                dictStore[IR.ps.stem(word.lower())].add(index+1)
+                                dictStore[IR.lemmatizer.lemmatize(word.lower())].add(index+1)
 
 
 
