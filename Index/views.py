@@ -2,6 +2,8 @@ from django.http import JsonResponse
 from Code import Code
 from Code import Search
 from Code import Database
+from Code import Check
+from Code import Delete
 
 def HomeRoute(request):
     apiKey = request.GET.get('apikey')
@@ -31,3 +33,17 @@ def DataRoute(request):
     update = request.GET.get('update')
     result = Database.Database.Database(update)
     return JsonResponse({"Success": result[0]})
+
+def CheckRoute(request):
+    apiKey = request.GET.get('apiKey')
+    userName = request.GET.get('userName')
+    repoName = request.GET.get('repoName')
+    result = Check.Check.Check(apiKey, userName, repoName)
+    return JsonResponse({"listIs": result[0]})
+
+def DeleteRoute(request):
+    apiKey = request.GET.get('apiKey')
+    userName = request.GET.get('userName')
+    repoName = request.GET.get('repoName')
+    result = Delete.Delete.Delete(apiKey, userName, repoName)
+    return JsonResponse({"Success": result})

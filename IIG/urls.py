@@ -21,5 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeRoute, name="Home"),
     path('search/',SearchRoute, name="Search"),
-    path('data/', DataRoute, name="Data")
+    path('data/', DataRoute, name="Data"),
+    path('check/',CheckRoute, name="Check"),
+    path('delete/', DeleteRoute, name="Delete")
 ]
